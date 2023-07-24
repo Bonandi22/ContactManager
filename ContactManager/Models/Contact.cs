@@ -8,7 +8,6 @@ namespace ContactManager.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(3)]
         public string? CountryCode { get; set; }
 
         [Required]

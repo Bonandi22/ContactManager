@@ -10,6 +10,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, serverVersion)
 );
 
+builder.Services.AddHttpClient();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

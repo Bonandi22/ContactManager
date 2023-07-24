@@ -1,0 +1,67 @@
+﻿@model ContactManager.Models.Person
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Contact Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Create</h1>
+
+    <h4>Person</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-controller="Person" asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <!-- Contacts Section -->
+                <div id="contacts-container">
+                    <div class="form-group contact">
+                        <label>Country Code</label>
+                        <input asp-for="Contacts[0].CountryCode" class="form-control" placeholder="Country Code" maxlength="4" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group contact">
+                        <label>Number</label>
+                        <input asp-for="Contacts[0].Number" class="form-control" placeholder="Number" />
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <button type="button" id="add-contact-btn" class="btn btn-primary">Add Another Contact</button>
+                <br />
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+@*    <script src="/js/Create.js"></script>
+*@
+</body>
+</html>
