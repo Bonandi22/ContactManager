@@ -1,11 +1,7 @@
 using ContactManager.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 26));
 
@@ -13,6 +9,13 @@ var connectionString = builder.Configuration.GetConnectionString("MariaDB");
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, serverVersion)
 );
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
